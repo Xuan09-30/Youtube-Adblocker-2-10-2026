@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg-main: #0d1117;
+      --bg-card: #161b22;
+      --accent: #58a6ff;
+      --danger: #ff4e45;
+      --danger-glow: rgba(255, 78, 69, 0.3);
+      --text-main: #c9d1d9;
+      --text-muted: #8b949e;
+      --border: #30363d;
+      --success: #3fb950;
+      --success-glow: rgba(63, 185, 80, 0.4);
+    }
+
+    body {
+      width: 260px;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .header svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .stats-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .count {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--danger);
+      line-height: 1;
+      text-shadow: 0 0 16px var(--danger-glow);
+      margin-bottom: 16px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(46, 160, 67, 0.1);
+      color: var(--success);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(46, 160, 67, 0.2);
+      letter-spacing: 0.5px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 0 var(--success-glow);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 var(--success-glow); }
+      70% { box-shadow: 0 0 0 6px rgba(63, 185, 80, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0); }
+    }
+
+    button {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--border);
+      color: var(--text-main);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+    <!-- SVG Shield Icon -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    <h2>YT Ad Skipper</h2>
+  </div>
+  
+  <div class="stats-card">
+    <div class="stats-label">Ads Skipped</div>
+    <div class="count" id="blocked-count">0</div>
+    <div class="status-badge">
+      <div class="pulse"></div>
+      SYSTEM ACTIVE
+    </div>
+  </div>
+  
+  <button id="reset-btn">Reset Counter</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
