@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "YT Ad Skipper Starter",
+  "version": "1.0",
+  "description": "An educational starter extension for handling YouTube ads.",
+  "permissions": ["scripting"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["*://*.youtube.com/*"]
+    }
+  ]
+}
